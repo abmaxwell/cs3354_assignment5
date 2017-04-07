@@ -1,0 +1,1 @@
+package assign5;/** *  Add comments to this file (including the methods)!! */public interface AvgDispenser{public double getNextAvg();public boolean done();}
