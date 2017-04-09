@@ -38,5 +38,11 @@ public class Roster {
     public void addStudent (Student student) {
         students.add(student);
     }
-    
+
+    /**
+     * Returns an abstract class which has a clone of
+     * every student's grade.
+     * @return
+     */
+    public
 }
