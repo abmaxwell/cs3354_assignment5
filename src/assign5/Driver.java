@@ -30,7 +30,9 @@ public class Driver {
                            df.format(student.getAverage()));
         // switch back to algorithm A:
         student.setDropLowestAssign(false);
-        
+
+
+        /*
         //test the GradeTracker
         GradeTracker gt = new GradeTracker(student);
         System.out.println("letter grade: " + gt.getLetterGrade());
@@ -58,6 +60,7 @@ public class Driver {
             System.out.println("next average "  +
                                df.format(ad.getNextAvg()));
         }
+        */
 
     }
 }
