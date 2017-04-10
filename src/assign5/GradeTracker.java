@@ -13,8 +13,9 @@ public class GradeTracker {
      */
     private Student student;
 
-    /*
+    /**
      * Constructor
+     * @param student the current student to calculate letter grade for.
      */
     public GradeTracker(Student student){
         this.student = student;
@@ -22,17 +23,17 @@ public class GradeTracker {
 
     /**
      * Returns the subject's current letter grade.
-     * @return letterGrade
+     * @return letterGrade the alphabetical representation of student's current grade
      */
     public char getLetterGrade() {
         return calculateLetterGrade(student.getAverage());
     }
 
     /**
-     * Returns the subject's average grade converted
-     * to its letter grade equivalent.
+     * Returns the subject's average grade converted to its
+     * letter grade equivalent.
      * @param studentAvgGrade
-     * @return letterGrade
+     * @return letterGrade the alphabetical representation of student's current grade
      */
     private char calculateLetterGrade(double studentAvgGrade){
         char letterGrade;
@@ -54,5 +55,4 @@ public class GradeTracker {
         }
         return letterGrade;
     }
-
 }

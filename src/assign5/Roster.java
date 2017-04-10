@@ -40,9 +40,34 @@ public class Roster {
     }
 
     /**
-     * Returns an abstract class which has a clone of
-     * every student's grade.
-     * @return
+     * Using data encapsulation getDispenser helps return
+     * students average grade to an implementing client.
+     * @return anonymous class modeled using the AvgDispenser Interface
      */
-    public
+    public AvgDispenser getDispenser() {
+
+        // Create anonymous class to carry out AvgDispenser Interface.
+        return new AvgDispenser() {
+
+            // Create list iterator to traverse roster of students.
+            ListIterator<Student> rosterIterator = students.listIterator();
+
+            /**
+             * @return average of current student from roster.
+             */
+            @Override
+            public double getNextAvg() {
+                return rosterIterator.next().getAverage();
+            }
+            /**
+             * @return boolean indicates whether Iterator from getNextAvg()
+             * is on last element of class Roster.
+             */
+            @Override
+            public boolean done() {
+                return !rosterIterator.hasNext();
+            }
+        };
+    }
+
 }

@@ -1,5 +1,6 @@
 package assign5;
 
+import java.util.Observable;
 import java.util.ArrayList;
 
 /**
@@ -8,10 +9,10 @@ import java.util.ArrayList;
  * @author Jill Seaman
  *
  */
-public class Student implements Grades {
+public class Student extends Observable implements Grades {
 
     private String name;                    // Students full name
-	private boolean algorithmSelect;
+	private boolean algorithmSelect;        // selects average algorithm
     private ArrayList<Double> assignments;  // scores for the assignments
     private ArrayList<Double> exams;        // scores for the exams
     
@@ -48,16 +49,20 @@ public class Student implements Grades {
 	}
 
 	/**
-	 * Implements the Grades interface to calculate an average grade.
+	 * Implements the Grades interface to calculate an average
+	 * grade using methods of the Grades interface.
 	 * @author Alexander Maxwell
-	 * @return avgGrade
+	 * @return the student's current average
 	 */
 	public double getAverage(){
 		return calculateAverage();
 	}
 	/**
-	 * Sets private member variable for getAverage() function.
+	 * Set private member variable algorithmSelect used in Grades
+	 * method calculateAverage().
 	 * @author Alexander Maxwell
+	 * @param algorithmSelect boolean value used to select average calculation
+	 *                        algorithm
 	 */
 	public void setDropLowestAssign(boolean algorithmSelect){
 		this.algorithmSelect = algorithmSelect;
@@ -67,23 +72,26 @@ public class Student implements Grades {
 	 * Grades interface, which calculates the average of grade for a
 	 * student based on a defined algorithm.
 	 * @author Alexander Maxwell
-	 * @return averageGrade
+	 * @return averageGrade the student's calculated average grade
 	 */
+	@Override
 	public double calculateAverage(){
 		double averageGrade = -1; // -1 Means error!
-
 		if (!algorithmSelect) {
 			// Select 60/40 average grade algorithm
 			averageGrade = standardAverage();
 		} else {
 			// Select the 60/40 (drop) average grade algorithm
 			if (assignments.size() >= 2) {
-				return averageGrade = dropAssignAverage();
+				averageGrade = dropAssignAverage();
 			} else {
 				System.out.println("Cannot drop lowest! Must have at least" +
 						"2 assignments posted.");
 			}
 		}
+		// Notify avgObserver of change to subject.
+		setChanged();
+		notifyObservers();
 		return averageGrade;
 	}
 	/**
@@ -92,8 +100,9 @@ public class Student implements Grades {
 	 * exam score for a student.
 	 *
 	 * @author Alexander Maxwell
-	 * @return totalExams
+	 * @return totalExams the total score for all of the student's exams
 	 */
+	@Override
 	public double totalExamsScore(){
 		double totalExams = 0;
 		for (double exam : exams) {
@@ -108,8 +117,9 @@ public class Student implements Grades {
 	 * assignment score for a student.
 	 *
 	 * @author Alexander Maxwell
-	 * @return totalAssign
+	 * @return totalAssign the total score for all of the student's assignments
 	 */
+	@Override
 	public double totalAssignScore(){
 		double totalAssign = 0;
 		for (double assignment : assignments) {
@@ -124,8 +134,9 @@ public class Student implements Grades {
 	 * and .40(assignments) calculation.
 	 *
 	 * @author Alexander Maxwell
-	 * @return average
+	 * @return average the standard algorithm for calculating the student's average
 	 */
+	@Override
 	public double standardAverage(){
 		//System.out.println("DEBUG: In standardAverage()");
 		double average;
@@ -141,8 +152,9 @@ public class Student implements Grades {
 	 * lowest assignment score.
 	 *
 	 * @author Alexander Maxwell
-	 * @return average
+	 * @return average the alternate algorithm for calculating the student's average
 	 */
+	@Override
 	public double dropAssignAverage(){
 		// System.out.println("DEBUG: In dropAssignAverage()");
 		double average;
@@ -159,12 +171,12 @@ public class Student implements Grades {
 	 * grade to the caller.
 	 *
 	 * @author Alexander Maxwell
-	 * @return indexLowest
+	 * @return indexLowest index of the student's lowest assignment grade
 	 */
+	@Override
 	public int findLowestAssign(){
 		double lowest = MAX_GRADE;
 		int indexLowest = 0;
-
 		for (double assignment : assignments){
 			if(assignment < lowest){
 				indexLowest = assignments.indexOf(assignment);
@@ -173,7 +185,4 @@ public class Student implements Grades {
 		}
 		return indexLowest;
 	}
-
-
-
 }

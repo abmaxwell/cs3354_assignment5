@@ -32,7 +32,6 @@ public class Driver {
         student.setDropLowestAssign(false);
 
 
-
         //test the GradeTracker
         GradeTracker gt = new GradeTracker(student);
         System.out.println("letter grade: " + gt.getLetterGrade());
@@ -48,12 +47,27 @@ public class Driver {
         hg.addAssignmentScore(99.3);
         hg.addExamScore(95);
         hg.addExamScore(97);
+
         
         //new roster
         Roster potions = new Roster("Potions","MAG2308");
         potions.addStudent(student);
         potions.addStudent(hg);
-        
+
+        /*DEBUGGING
+        for(int index = 0; index < 50;){
+            Student tempStudent = new Student("Student" + index+1);
+            tempStudent.addAssignmentScore(60 + index*2);
+            tempStudent.addAssignmentScore(100 - index);
+            tempStudent.addAssignmentScore(100);
+            tempStudent.addExamScore(50+index/6);
+            tempStudent.addExamScore(80+index/2);
+            tempStudent.addExamScore(100);
+            potions.addStudent(tempStudent);
+            index++;
+        }
+        */
+
         //test the roster traversal
         System.out.println("Potions grades:");
         AvgDispenser ad = potions.getDispenser();
@@ -61,7 +75,5 @@ public class Driver {
             System.out.println("next average "  +
                                df.format(ad.getNextAvg()));
         }
-        */
-
     }
 }
