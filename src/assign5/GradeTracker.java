@@ -7,43 +7,42 @@ package assign5;
  * @author Alexander Maxwell
  */
 
-public class GradeTracker {
+public class GradeTracker implements GTInterface {
+
     /*
      * Private member variables.
      */
     private Student student;
+    private char letterGrade;
 
     /**
-     * Constructor
+     * Default Constructor
+     */
+    public GradeTracker(){};
+
+    /**
+     * Overloaded Constructor
+     *
      * @param student the current student to calculate letter grade for.
      */
-    public GradeTracker(Student student){
-        this.student = student;
-    }
+    public GradeTracker(Student student){this.student=student;}
 
     /**
      * Returns the subject's current letter grade.
+     *
      * @return letterGrade the alphabetical representation of student's current grade
      */
+    @Override
     public char getLetterGrade() {
-        return calculateLetterGrade(student.getAverage());
-    }
-
-    /**
-     * Returns the subject's average grade converted to its
-     * letter grade equivalent.
-     * @param studentAvgGrade
-     * @return letterGrade the alphabetical representation of student's current grade
-     */
-    private char calculateLetterGrade(double studentAvgGrade){
         char letterGrade;
-        if (studentAvgGrade >= 90.0){
+        double studentAvgGrade = student.getAverage();
+        if (studentAvgGrade >= 90.0) {
             // A
             letterGrade = 'A';
-        } else if (studentAvgGrade <= 89.9 && studentAvgGrade >= 80.0){
+        } else if (studentAvgGrade <= 89.9 && studentAvgGrade >= 80.0) {
             // B
             letterGrade = 'B';
-        } else if (studentAvgGrade <= 79.9 && studentAvgGrade >= 70.0){
+        } else if (studentAvgGrade <= 79.9 && studentAvgGrade >= 70.0) {
             // C
             letterGrade = 'C';
         } else if (studentAvgGrade <= 69.9 && studentAvgGrade >= 60.0) {

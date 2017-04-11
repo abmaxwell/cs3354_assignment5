@@ -1,7 +1,6 @@
 package assign5;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
 
 /**
  *  Driver to test the Roster/Student classes.
@@ -54,7 +53,7 @@ public class Driver {
         potions.addStudent(student);
         potions.addStudent(hg);
 
-        /*DEBUGGING
+        /* DEBUG
         for(int index = 0; index < 50;){
             Student tempStudent = new Student("Student" + index+1);
             tempStudent.addAssignmentScore(60 + index*2);

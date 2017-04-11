@@ -46,7 +46,7 @@ public class Roster {
      */
     public AvgDispenser getDispenser() {
 
-        // Create anonymous class to carry out AvgDispenser Interface.
+        // Create anonymous class to carry out AvgDispenser 2Interface.
         return new AvgDispenser() {
 
             // Create list iterator to traverse roster of students.
