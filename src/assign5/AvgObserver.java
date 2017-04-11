@@ -28,8 +28,8 @@ public class AvgObserver implements Observer{
     }
 
     /**
-     * Public method to process an update to observer
-     * after change to subject is detected.
+     * Public method to process an update to the observer
+     * after change to the subject (Student) is detected.
      * @param obj the object being observed
      * @param arg a specific argument that can be passed
      *            into the update method.

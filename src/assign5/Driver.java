@@ -67,6 +67,7 @@ public class Driver {
         }
         */
 
+
         //test the roster traversal
         System.out.println("Potions grades:");
         AvgDispenser ad = potions.getDispenser();
